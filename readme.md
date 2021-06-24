@@ -17,3 +17,5 @@ run all builds -> `yarn workspaces foreach run build`
 install interactive tools -> `yarn plugin import interactive-tools`
 
 to see if all packages are up to date -> `yarn upgrade-interactive`
+
+use code from -> `https://github.com/react-boilerplate/redux-injectors`

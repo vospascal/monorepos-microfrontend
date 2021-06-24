@@ -1,8 +1,9 @@
-import createSagaMiddleware from "redux-saga";
+// import createSagaMiddleware from "redux-saga";
+// export const sagaMiddleware = createSagaMiddleware();
+
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 // Create the saga middleware
-export const sagaMiddleware = createSagaMiddleware();
-import { data, error, loading } from "./data_reducer";
+import { data, error, loading } from "./global.reducer";
 
 function* fetchData(action) {
   try {

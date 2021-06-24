@@ -1,17 +1,34 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counter_reducer";
-import toggleReducer from "./toggle_reducer";
-import dataSlice from "./data_reducer";
+import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import createSagaMiddleware from 'redux-saga';
 
-import { sagaMiddleware, mySaga } from "./saga";
+import {createInjectorsEnhancer} from "../utils";
+import {createReducer} from "./reducers";
 
-export default configureStore({
-  reducer: {
-    counter: counterReducer,
-    toggle: toggleReducer,
-    data: dataSlice,
-  },
-  middleware: [sagaMiddleware],
-});
-// Then run the saga
-sagaMiddleware.run(mySaga);
+export function configureAppStore() {
+    const reduxSagaMonitorOptions = {};
+    const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
+    const {run: runSaga} = sagaMiddleware;
+
+    // Create the store with saga middleware
+    const middlewares = [sagaMiddleware];
+
+    const enhancers = [
+        createInjectorsEnhancer({
+            createReducer,
+            runSaga,
+        }),
+    ];
+
+    const store = configureStore({
+        reducer: createReducer(),
+        middleware: [...getDefaultMiddleware(), ...middlewares],
+        devTools:
+        /* istanbul ignore next line */
+            process.env.NODE_ENV !== 'production' ||
+            process.env.PUBLIC_URL.length > 0,
+        enhancers,
+    });
+
+    return store;
+
+}

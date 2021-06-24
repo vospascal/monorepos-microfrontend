@@ -1967,6 +1967,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"invariant@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "invariant@npm:2.2.4"
+  dependencies:
+    loose-envify: ^1.0.0
+  checksum: 96d8a2a4f0ad21020c5847546fc36bec5c0870d99f071aaa93df00c1036439d48211a1823ab6128f78a15ccc4c4f62baf6a65f6c0ed489270dd44d0a04f443a1
+  languageName: node
+  linkType: hard
+
 "is-arrayish@npm:^0.2.1":
   version: 0.2.1
   resolution: "is-arrayish@npm:0.2.1"
@@ -2191,7 +2200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -3026,7 +3035,10 @@ __metadata:
     "@babel/preset-react": ^7.14.5
     "@reduxjs/toolkit": ^1.5.1
     babel-loader: ^8.2.2
+    hoist-non-react-statics: ^3.3.2
     html-webpack-plugin: ^5.3.2
+    invariant: ^2.2.4
+    lodash: ^4.17.21
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.4

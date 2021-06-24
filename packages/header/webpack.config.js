@@ -64,6 +64,18 @@ module.exports = {
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        "react-redux": {
+          singleton: true,
+          requiredVersion: deps["react-redux"],
+        },
+        "redux-saga": {
+          singleton: true,
+          requiredVersion: deps["redux-saga"],
+        },
+        "@reduxjs/toolkit": {
+          singleton: true,
+          requiredVersion: deps["@reduxjs/toolkit"],
+        },
       },
     }),
     new HtmlWebpackPlugin({
