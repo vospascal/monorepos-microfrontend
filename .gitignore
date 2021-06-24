@@ -2,3 +2,4 @@
 .yarn
 .pnp.js
 *dist
+.idea
