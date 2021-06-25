@@ -1,8 +1,8 @@
-import React from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
-import { useStore, ReactReduxContext } from 'react-redux';
-import { SagaInjectionModes } from './constants';
-import getInjectors from './sagaInjectors';
+import React from "react";
+import hoistNonReactStatics from "hoist-non-react-statics";
+import { useStore, ReactReduxContext } from "react-redux";
+import { SagaInjectionModes } from "./constants";
+import getInjectors from "./sagaInjectors";
 
 /**
  * A higher-order component that dynamically injects a saga when the component
@@ -30,35 +30,36 @@ import getInjectors from './sagaInjectors';
  * @public
  *
  */
-export default ({ key, saga, mode }) => WrappedComponent => {
-  class InjectSaga extends React.Component {
-    static WrappedComponent = WrappedComponent;
+export default ({ key, saga, mode }) =>
+  (WrappedComponent) => {
+    class InjectSaga extends React.Component {
+      static WrappedComponent = WrappedComponent;
 
-    static contextType = ReactReduxContext;
+      static contextType = ReactReduxContext;
 
-    static displayName = `withSaga(${WrappedComponent.displayName ||
-      WrappedComponent.name ||
-      'Component'})`;
+      static displayName = `withSaga(${
+        WrappedComponent.displayName || WrappedComponent.name || "Component"
+      })`;
 
-    constructor(props, context) {
-      super(props, context);
+      constructor(props, context) {
+        super(props, context);
 
-      this.injectors = getInjectors(context.store);
+        this.injectors = getInjectors(context.store);
 
-      this.injectors.injectSaga(key, { saga, mode });
+        this.injectors.injectSaga(key, { saga, mode });
+      }
+
+      componentWillUnmount() {
+        this.injectors.ejectSaga(key);
+      }
+
+      render() {
+        return <WrappedComponent {...this.props} />;
+      }
     }
 
-    componentWillUnmount() {
-      this.injectors.ejectSaga(key);
-    }
-
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  }
-
-  return hoistNonReactStatics(InjectSaga, WrappedComponent);
-};
+    return hoistNonReactStatics(InjectSaga, WrappedComponent);
+  };
 
 /**
  * A react hook that dynamically injects a saga when the hook is run

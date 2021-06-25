@@ -1,5 +1,5 @@
-import { useInjectReducer } from './injectReducer';
-import { useInjectSaga } from './injectSaga';
+import { useInjectReducer } from "./injectReducer";
+import { useInjectSaga } from "./injectSaga";
 
 /**
  * Creates a "manager" component that will inject the provided reducer and saga

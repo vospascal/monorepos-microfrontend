@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {counterActions, useCounterSlice} from "./Counter.slice";
-import {selectCounterValue} from "./Counter.selectors";
+import { counterActions, useCounterSlice } from "./Counter.slice";
+import { selectCounterValue } from "./Counter.selectors";
 
 function Counter() {
   useCounterSlice();

@@ -1,13 +1,13 @@
-import React from 'react';
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import { Provider, useSelector } from 'react-redux';
-import createSagaMiddleware from 'redux-saga';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { format } from 'util';
-import { put } from 'redux-saga/effects';
-import { createInjectorsEnhancer, useInjectReducer } from '../index';
-import { useInjectSaga } from '../injectSaga';
-import { createManager } from '../createManager';
+import React from "react";
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import { Provider, useSelector } from "react-redux";
+import createSagaMiddleware from "redux-saga";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { format } from "util";
+import { put } from "redux-saga/effects";
+import { createInjectorsEnhancer, useInjectReducer } from "../index";
+import { useInjectSaga } from "../injectSaga";
+import { createManager } from "../createManager";
 
 window.console.error = (...args) => {
   throw new Error(format(...args));
@@ -36,7 +36,7 @@ function configureStore() {
   return store;
 }
 
-describe('redux-injectors', () => {
+describe("redux-injectors", () => {
   it('should not log react warning "Cannot update a component from inside the function body of a different component" (see #19)', () => {
     const store = configureStore();
 
@@ -47,13 +47,13 @@ describe('redux-injectors', () => {
     }
 
     function BooksInjectorComponent() {
-      useInjectReducer({ key: 'books', reducer: booksReducer });
+      useInjectReducer({ key: "books", reducer: booksReducer });
 
       return null;
     }
 
     // Intentionally using filter so this selector returns a new object ref
-    const selectBooks = state => state?.books?.books?.filter(Boolean) || [];
+    const selectBooks = (state) => state?.books?.books?.filter(Boolean) || [];
 
     function BooksShowerComponent() {
       const books = useSelector(selectBooks);
@@ -75,15 +75,15 @@ describe('redux-injectors', () => {
       <Provider store={store}>
         <BooksInjectorWrapper />
         <BooksShowerComponent />
-      </Provider>,
+      </Provider>
     );
 
     fireEvent.click(
-      screen.queryByRole('button', { name: 'Inject books reducer' }),
+      screen.queryByRole("button", { name: "Inject books reducer" })
     );
   });
 
-  it('should return booleans indicating injection status', () => {
+  it("should return booleans indicating injection status", () => {
     const store = configureStore();
 
     function booksReducer() {
@@ -93,15 +93,15 @@ describe('redux-injectors', () => {
     }
 
     function* booksSaga() {
-      yield put({ type: 'TEST', payload: 'yup' });
+      yield put({ type: "TEST", payload: "yup" });
     }
 
     function BooksInjectorComponent() {
       const reducerInjected = useInjectReducer({
-        key: 'books',
+        key: "books",
         reducer: booksReducer,
       });
-      const sagaInjected = useInjectSaga({ key: 'books', saga: booksSaga });
+      const sagaInjected = useInjectSaga({ key: "books", saga: booksSaga });
 
       return reducerInjected && sagaInjected ? (
         <div>Everything is injected</div>
@@ -113,17 +113,17 @@ describe('redux-injectors', () => {
     const wrapper = render(
       <Provider store={store}>
         <BooksInjectorComponent />
-      </Provider>,
+      </Provider>
     );
 
-    expect(wrapper.container.textContent).toEqual('Everything is injected');
+    expect(wrapper.container.textContent).toEqual("Everything is injected");
   });
 
-  it('should create a manager that uses the COUNTER mode', () => {
+  it("should create a manager that uses the COUNTER mode", () => {
     const store = configureStore();
 
     function booksReducer(state = { numSagaInjections: 0 }, action) {
-      if (action.type === 'SAGA_INJECTION') {
+      if (action.type === "SAGA_INJECTION") {
         return {
           numSagaInjections: state.numSagaInjections + 1,
         };
@@ -133,19 +133,19 @@ describe('redux-injectors', () => {
     }
 
     function* booksSaga() {
-      yield put({ type: 'SAGA_INJECTION' });
+      yield put({ type: "SAGA_INJECTION" });
     }
 
     const BooksManager = createManager({
-      name: 'BooksManager',
-      key: 'books',
+      name: "BooksManager",
+      key: "books",
       reducer: booksReducer,
       saga: booksSaga,
     });
 
     function BooksList() {
       const numSagaInjections = useSelector(
-        state => state.books.numSagaInjections,
+        (state) => state.books.numSagaInjections
       );
 
       return <div>Books List (Num Saga Injections: {numSagaInjections})</div>;
@@ -153,7 +153,7 @@ describe('redux-injectors', () => {
 
     function BooksPage() {
       const numSagaInjections = useSelector(
-        state => state.books.numSagaInjections,
+        (state) => state.books.numSagaInjections
       );
 
       return <div>Books Page (Num Saga Injections: {numSagaInjections})</div>;
@@ -188,48 +188,48 @@ describe('redux-injectors', () => {
     const wrapper = render(
       <Provider store={store}>
         <App />
-      </Provider>,
+      </Provider>
     );
 
     expect(wrapper.container.textContent).toContain(
-      'Books List (Num Saga Injections: 1)',
+      "Books List (Num Saga Injections: 1)"
     );
     expect(wrapper.container.textContent).toContain(
-      'Books Page (Num Saga Injections: 1)',
-    );
-
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle Page' }));
-    expect(wrapper.container.textContent).toContain(
-      'Books List (Num Saga Injections: 1)',
-    );
-    expect(wrapper.container.textContent).not.toContain('Books Page');
-
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle Page' }));
-    expect(wrapper.container.textContent).toContain(
-      'Books List (Num Saga Injections: 1)',
-    );
-    expect(wrapper.container.textContent).toContain(
-      'Books Page (Num Saga Injections: 1)',
+      "Books Page (Num Saga Injections: 1)"
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle Page' }));
+    fireEvent.click(screen.getByRole("button", { name: "Toggle Page" }));
     expect(wrapper.container.textContent).toContain(
-      'Books List (Num Saga Injections: 1)',
+      "Books List (Num Saga Injections: 1)"
     );
-    expect(wrapper.container.textContent).not.toContain('Books Page');
+    expect(wrapper.container.textContent).not.toContain("Books Page");
 
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle List' }));
-    expect(wrapper.container.textContent).not.toContain('Books List');
-    expect(wrapper.container.textContent).not.toContain('Books Page');
-
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle List' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle Page' }));
-
+    fireEvent.click(screen.getByRole("button", { name: "Toggle Page" }));
     expect(wrapper.container.textContent).toContain(
-      'Books List (Num Saga Injections: 2)',
+      "Books List (Num Saga Injections: 1)"
     );
     expect(wrapper.container.textContent).toContain(
-      'Books Page (Num Saga Injections: 2)',
+      "Books Page (Num Saga Injections: 1)"
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Toggle Page" }));
+    expect(wrapper.container.textContent).toContain(
+      "Books List (Num Saga Injections: 1)"
+    );
+    expect(wrapper.container.textContent).not.toContain("Books Page");
+
+    fireEvent.click(screen.getByRole("button", { name: "Toggle List" }));
+    expect(wrapper.container.textContent).not.toContain("Books List");
+    expect(wrapper.container.textContent).not.toContain("Books Page");
+
+    fireEvent.click(screen.getByRole("button", { name: "Toggle List" }));
+    fireEvent.click(screen.getByRole("button", { name: "Toggle Page" }));
+
+    expect(wrapper.container.textContent).toContain(
+      "Books List (Num Saga Injections: 2)"
+    );
+    expect(wrapper.container.textContent).toContain(
+      "Books Page (Num Saga Injections: 2)"
     );
   });
 });

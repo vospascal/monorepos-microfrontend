@@ -1,7 +1,7 @@
-export const RESTART_ON_REMOUNT = '@@saga-injector/restart-on-remount';
-export const DAEMON = '@@saga-injector/daemon';
-export const ONCE_TILL_UNMOUNT = '@@saga-injector/once-till-unmount';
-export const COUNTER = '@@saga-injector/counter';
+export const RESTART_ON_REMOUNT = "@@saga-injector/restart-on-remount";
+export const DAEMON = "@@saga-injector/daemon";
+export const ONCE_TILL_UNMOUNT = "@@saga-injector/once-till-unmount";
+export const COUNTER = "@@saga-injector/counter";
 
 /**
  * An enum of all the possible saga injection behaviours

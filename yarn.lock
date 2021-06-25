@@ -2315,6 +2315,7 @@ __metadata:
   resolution: "monorepos-microfrontend@workspace:."
   dependencies:
     concurrently: ^6.2.0
+    prettier: ^2.3.1
     wsrun: ^5.2.4
   languageName: unknown
   linkType: soft
@@ -2586,6 +2587,15 @@ __metadata:
   dependencies:
     find-up: ^4.0.0
   checksum: 1956ebf3cf5cc36a5d20e93851fcadd5a786774eb08667078561e72e0ab8ace91fc36a028d5305f0bfe7c89f9bf51886e2a3c8cb2c2620accfa3feb8da3c256b
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "prettier@npm:2.3.1"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 9b4a695b87ce5f510fc20feec01cce7371f0fa0b92ffe79d543f6be52e2004c532861629de4d7ab1c577e1f649dce3cfccd62cb2ca6526b1da8d9c63eb84bf36
   languageName: node
   linkType: hard
 

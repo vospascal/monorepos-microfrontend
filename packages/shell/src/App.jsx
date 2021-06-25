@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Shell from './Shell';
-
+import Shell from "./Shell";
 
 function App() {
   return (
     <div>
-        <Shell />
+      <Shell />
     </div>
   );
 }

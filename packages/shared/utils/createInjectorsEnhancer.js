@@ -1,6 +1,6 @@
-import invariant from 'invariant';
-import conformsTo from 'lodash/conformsTo';
-import isFunction from 'lodash/isFunction';
+import invariant from "invariant";
+import conformsTo from "lodash/conformsTo";
+import isFunction from "lodash/isFunction";
 
 /**
  * Creates a store enhancer that when applied will setup the store to allow the
@@ -45,19 +45,20 @@ export function createInjectorsEnhancer(params) {
       runSaga: isFunction,
       createReducer: isFunction,
     }),
-    '(redux-injectors...) createInjectorsEnhancer: params `runSaga` and ' +
-      '`createReducer` are required.',
+    "(redux-injectors...) createInjectorsEnhancer: params `runSaga` and " +
+      "`createReducer` are required."
   );
 
-  return createStore => (...args) => {
-    const store = createStore(...args);
+  return (createStore) =>
+    (...args) => {
+      const store = createStore(...args);
 
-    return {
-      ...store,
-      createReducer: params.createReducer,
-      runSaga: params.runSaga,
-      injectedReducers: {}, // Reducer registry
-      injectedSagas: {}, // Saga registry
+      return {
+        ...store,
+        createReducer: params.createReducer,
+        runSaga: params.runSaga,
+        injectedReducers: {}, // Reducer registry
+        injectedSagas: {}, // Saga registry
+      };
     };
-  };
 }
