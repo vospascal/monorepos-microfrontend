@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {useInjectReducer} from "../../utils";
+import {useInjectReducer} from "../../../../shared/utils";
 
 export const initialState = {
     value: 0,

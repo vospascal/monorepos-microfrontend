@@ -1273,7 +1273,10 @@ __metadata:
     "@babel/preset-react": ^7.14.5
     "@reduxjs/toolkit": ^1.5.1
     babel-loader: ^8.2.2
+    hoist-non-react-statics: ^3.3.2
     html-webpack-plugin: ^5.3.2
+    invariant: ^2.2.4
+    lodash: ^4.17.21
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.4
@@ -1702,7 +1705,10 @@ __metadata:
     "@babel/preset-react": ^7.14.5
     "@reduxjs/toolkit": ^1.5.1
     babel-loader: ^8.2.2
+    hoist-non-react-statics: ^3.3.2
     html-webpack-plugin: ^5.3.2
+    invariant: ^2.2.4
+    lodash: ^4.17.21
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.4
@@ -1839,7 +1845,10 @@ __metadata:
     "@babel/preset-react": ^7.14.5
     "@reduxjs/toolkit": ^1.5.1
     babel-loader: ^8.2.2
+    hoist-non-react-statics: ^3.3.2
     html-webpack-plugin: ^5.3.2
+    invariant: ^2.2.4
+    lodash: ^4.17.21
     react: ^17.0.2
     react-dom: ^17.0.2
     react-redux: ^7.2.4
@@ -2994,6 +3003,21 @@ __metadata:
   checksum: e329e054c286f0681fd8a9e5c353999519332f12510a99e189ea9cfa0337adb6f1414639d44493418ef6790a693b78c354525269f5db25a9feddd8b4d7891a62
   languageName: node
   linkType: hard
+
+"shared@workspace:packages/shared":
+  version: 0.0.0-use.local
+  resolution: "shared@workspace:packages/shared"
+  dependencies:
+    "@reduxjs/toolkit": ^1.5.1
+    hoist-non-react-statics: ^3.3.2
+    invariant: ^2.2.4
+    lodash: ^4.17.21
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-redux: ^7.2.4
+    redux-saga: ^1.1.3
+  languageName: unknown
+  linkType: soft
 
 "shebang-command@npm:^1.2.0":
   version: 1.2.0

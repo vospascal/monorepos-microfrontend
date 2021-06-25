@@ -56,9 +56,9 @@ module.exports = {
       exposes: {},
       shared: {
         ...deps,
-        react: {
+        'react': {
           singleton: true,
-          requiredVersion: deps.react,
+          requiredVersion: deps["react"],
         },
         "react-dom": {
           singleton: true,
@@ -75,6 +75,18 @@ module.exports = {
         "@reduxjs/toolkit": {
           singleton: true,
           requiredVersion: deps["@reduxjs/toolkit"],
+        },
+        "lodash": {
+          singleton: true,
+          requiredVersion: deps["lodash"],
+        },
+        "invariant": {
+          singleton: true,
+          requiredVersion: deps["invariant"],
+        },
+        "hoist-non-react-statics": {
+          singleton: true,
+          requiredVersion: deps["hoist-non-react-statics"],
         },
       },
     }),
