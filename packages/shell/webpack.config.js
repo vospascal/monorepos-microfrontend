@@ -64,6 +64,10 @@ module.exports = {
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        redux: {
+          singleton: true,
+          requiredVersion: deps["redux"],
+        },
         "react-redux": {
           singleton: true,
           requiredVersion: deps["react-redux"],
@@ -87,6 +91,18 @@ module.exports = {
         "hoist-non-react-statics": {
           singleton: true,
           requiredVersion: deps["hoist-non-react-statics"],
+        },
+        "react-router": {
+          singleton: true,
+          requiredVersion: deps["react-router"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
+        "connected-react-router": {
+          singleton: true,
+          requiredVersion: deps["connected-react-router"],
         },
       },
     }),

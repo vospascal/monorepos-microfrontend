@@ -14,7 +14,7 @@
   ],
   "devDependencies": {
     "concurrently": "^6.2.0",
-    "wsrun": "^5.2.4",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.1",
+    "wsrun": "^5.2.4"
   }
 }

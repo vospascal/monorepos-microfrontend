@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div
@@ -10,6 +12,8 @@ const Header = () => {
       }}
     >
       header!
+      <br />
+      <Link to="/">home</Link> | <Link to="/test">test</Link>
     </div>
   );
 };

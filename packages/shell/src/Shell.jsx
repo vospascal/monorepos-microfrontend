@@ -5,6 +5,8 @@ import Header from "header/Header";
 import Content from "content/Content";
 import Counter from "./components/Counter/Counter";
 
+import { Route, Switch } from "react-router-dom";
+
 const Shell = () => {
   return (
     <div
@@ -14,9 +16,20 @@ const Shell = () => {
         margin: "5px",
       }}
     >
-      <Counter></Counter>
       <Header></Header>
-      <Content></Content>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div>
+              <Counter></Counter>
+              <Content></Content>
+            </div>
+          )}
+        />
+        <Route exact path="/test" render={() => <div>test</div>} />
+      </Switch>
       <Footer></Footer>
     </div>
   );

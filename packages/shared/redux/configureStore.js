@@ -1,16 +1,18 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
+import { routerMiddleware } from "connected-react-router";
+
 import { createInjectorsEnhancer } from "../utils";
 import { createReducer } from "./reducers";
 
-export function configureAppStore() {
+export function configureAppStore(initialState = {}, history) {
   const reduxSagaMonitorOptions = {};
   const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
   const { run: runSaga } = sagaMiddleware;
 
   // Create the store with saga middleware
-  const middlewares = [sagaMiddleware];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const enhancers = [
     createInjectorsEnhancer({

@@ -58,11 +58,15 @@ module.exports = {
         ...deps,
         react: {
           singleton: true,
-          requiredVersion: deps.react,
+          requiredVersion: deps["react"],
         },
         "react-dom": {
           singleton: true,
           requiredVersion: deps["react-dom"],
+        },
+        redux: {
+          singleton: true,
+          requiredVersion: deps["redux"],
         },
         "react-redux": {
           singleton: true,
@@ -75,6 +79,30 @@ module.exports = {
         "@reduxjs/toolkit": {
           singleton: true,
           requiredVersion: deps["@reduxjs/toolkit"],
+        },
+        lodash: {
+          singleton: true,
+          requiredVersion: deps["lodash"],
+        },
+        invariant: {
+          singleton: true,
+          requiredVersion: deps["invariant"],
+        },
+        "hoist-non-react-statics": {
+          singleton: true,
+          requiredVersion: deps["hoist-non-react-statics"],
+        },
+        "react-router": {
+          singleton: true,
+          requiredVersion: deps["react-router"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: deps["react-router-dom"],
+        },
+        "connected-react-router": {
+          singleton: true,
+          requiredVersion: deps["connected-react-router"],
         },
       },
     }),
