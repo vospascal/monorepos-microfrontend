@@ -1,11 +1,14 @@
 import React from "react";
 
-import Footer from "footer/Footer";
-import Header from "header/Header";
-import Content from "content/Content";
-import Counter from "./components/Counter/Counter";
+import Counter from "./components/Counter/Counter.loadable";
+
+const Footer = React.lazy(() => import("footer/Footer"));
+const Header = React.lazy(() => import("header/Header"));
+const Content = React.lazy(() => import("content/Content"));
 
 import { Route, Switch } from "react-router-dom";
+import AsyncLoader from "./components/AsyncLoader/AsyncLoader";
+import { lazyLoad } from "../../shared/utils/loadable";
 
 const Shell = () => {
   return (
@@ -16,7 +19,9 @@ const Shell = () => {
         margin: "5px",
       }}
     >
-      <Header></Header>
+      <AsyncLoader>
+        <Header></Header>
+      </AsyncLoader>
       <Switch>
         <Route
           exact
@@ -24,13 +29,17 @@ const Shell = () => {
           render={() => (
             <div>
               <Counter></Counter>
-              <Content></Content>
+              <AsyncLoader>
+                <Content></Content>
+              </AsyncLoader>
             </div>
           )}
         />
         <Route exact path="/test" render={() => <div>test</div>} />
       </Switch>
-      <Footer></Footer>
+      <AsyncLoader>
+        <Footer></Footer>
+      </AsyncLoader>
     </div>
   );
 };

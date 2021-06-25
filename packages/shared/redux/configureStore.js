@@ -3,7 +3,7 @@ import createSagaMiddleware from "redux-saga";
 
 import { routerMiddleware } from "connected-react-router";
 
-import { createInjectorsEnhancer } from "../utils";
+import { createInjectorsEnhancer } from "../utils/injector";
 import { createReducer } from "./reducers";
 
 export function configureAppStore(initialState = {}, history) {

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { counterActions, useCounterSlice } from "./Counter.slice";
 import { selectCounterValue } from "./Counter.selectors";
 
-function Counter() {
+export function Counter() {
   useCounterSlice();
 
   const count = useSelector(selectCounterValue);
