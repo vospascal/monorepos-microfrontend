@@ -1,6 +1,6 @@
 import invariant from "invariant";
-import conformsTo from "lodash/conformsTo";
-import isFunction from "lodash/isFunction";
+import conformsTo from "lodash-es/conformsTo";
+import isFunction from "lodash-es/isFunction";
 
 /**
  * Creates a store enhancer that when applied will setup the store to allow the

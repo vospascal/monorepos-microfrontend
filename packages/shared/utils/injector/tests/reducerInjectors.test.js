@@ -2,7 +2,7 @@
  * Test injectors
  */
 
-import identity from "lodash/identity";
+import identity from "lodash-es/identity";
 import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { createInjectorsEnhancer } from "../createInjectorsEnhancer";

@@ -14,7 +14,7 @@ module.exports = {
   },
 
   output: {
-    publicPath: "http://localhost:3004/",
+    publicPath: "http://localhost:3005/",
   },
 
   resolve: {
@@ -46,16 +46,14 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "shell",
+      name: "pageone",
       filename: "remoteEntry.js",
       remotes: {
-        footer: "footer@http://localhost:3001/remoteEntry.js",
-        header: "header@http://localhost:3002/remoteEntry.js",
-        content: "content@http://localhost:3003/remoteEntry.js",
-        pageone: "pageone@http://localhost:3005/remoteEntry.js",
-        pagetwo: "pagetwo@http://localhost:3006/remoteEntry.js",
+        // nav: "nav@http://localhost:3003/remoteEntry.js",
       },
-      exposes: {},
+      exposes: {
+        "./PageOne": "./src/PageOne",
+      },
       shared: {
         ...deps,
         react: {

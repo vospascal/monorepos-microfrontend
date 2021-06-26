@@ -13,7 +13,8 @@ const Header = () => {
     >
       header!
       <br />
-      <Link to="/">home</Link> | <Link to="/test">test</Link>
+      <Link to="/">home</Link> |<Link to="/test">test</Link> |
+      <Link to="/pageone">page one</Link> |<Link to="/pagetwo">page two</Link>
     </div>
   );
 };

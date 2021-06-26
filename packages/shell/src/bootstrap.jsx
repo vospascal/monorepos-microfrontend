@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Provider from "../../shared/redux/Provider";
+import Provider from "./../../shared/redux/Provider";
 import App from "./App";
 
 const root = document.getElementById("root");

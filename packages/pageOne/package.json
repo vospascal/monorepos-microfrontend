@@ -1,9 +1,9 @@
 {
-  "name": "footer",
+  "name": "pageone",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3001"
+    "serve": "serve dist -p 3005"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",

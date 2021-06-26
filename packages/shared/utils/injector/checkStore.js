@@ -1,6 +1,6 @@
-import conformsTo from "lodash/conformsTo";
-import isFunction from "lodash/isFunction";
-import isObject from "lodash/isObject";
+import conformsTo from "lodash-es/conformsTo";
+import isFunction from "lodash-es/isFunction";
+import isObject from "lodash-es/isObject";
 import invariant from "invariant";
 
 /**
